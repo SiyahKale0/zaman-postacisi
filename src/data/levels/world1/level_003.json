@@ -1,0 +1,28 @@
+{
+    "id": 3,
+    "world": "stone_age",
+    "name": "Dikkatli Adımlar",
+    "inkLimit": 280,
+    "start": {
+        "x": 50,
+        "y": 150
+    },
+    "goal": {
+        "x": 330,
+        "y": 520,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 170,
+            "y": 400,
+            "width": 50,
+            "height": 30
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

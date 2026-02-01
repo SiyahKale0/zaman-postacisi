@@ -1,0 +1,44 @@
+{
+    "id": 7,
+    "world": "stone_age",
+    "name": "Rüzgar Tüneli",
+    "inkLimit": 280,
+    "start": {
+        "x": 50,
+        "y": 120
+    },
+    "goal": {
+        "x": 310,
+        "y": 530,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 100,
+            "y": 280,
+            "forceX": 1.0,
+            "forceY": 0,
+            "radius": 60
+        },
+        {
+            "type": "fan",
+            "x": 260,
+            "y": 380,
+            "forceX": -0.6,
+            "forceY": -0.4,
+            "radius": 65
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 480,
+            "width": 40,
+            "height": 20
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 120
+    }
+}

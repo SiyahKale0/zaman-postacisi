@@ -1,0 +1,35 @@
+{
+    "id": 4,
+    "world": "stone_age",
+    "name": "Çift Engel",
+    "inkLimit": 320,
+    "start": {
+        "x": 60,
+        "y": 100
+    },
+    "goal": {
+        "x": 320,
+        "y": 580,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 120,
+            "y": 320,
+            "width": 45,
+            "height": 25
+        },
+        {
+            "type": "spike",
+            "x": 240,
+            "y": 450,
+            "width": 45,
+            "height": 25
+        }
+    ],
+    "stars": {
+        "twoStar": 220,
+        "threeStar": 160
+    }
+}

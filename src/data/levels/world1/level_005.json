@@ -1,0 +1,29 @@
+{
+    "id": 5,
+    "world": "stone_age",
+    "name": "Rüzgar Yardımı",
+    "inkLimit": 250,
+    "start": {
+        "x": 50,
+        "y": 200
+    },
+    "goal": {
+        "x": 340,
+        "y": 550,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 200,
+            "y": 350,
+            "forceX": 0.8,
+            "forceY": -0.3,
+            "radius": 80
+        }
+    ],
+    "stars": {
+        "twoStar": 160,
+        "threeStar": 100
+    }
+}

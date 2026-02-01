@@ -1,0 +1,44 @@
+{
+    "id": 9,
+    "world": "stone_age",
+    "name": "Işınlanma",
+    "inkLimit": 250,
+    "start": {
+        "x": 50,
+        "y": 100
+    },
+    "goal": {
+        "x": 300,
+        "y": 530,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 100,
+            "y": 280,
+            "exitX": 280,
+            "exitY": 180,
+            "radius": 25
+        },
+        {
+            "type": "spike",
+            "x": 140,
+            "y": 400,
+            "width": 90,
+            "height": 25
+        },
+        {
+            "type": "fan",
+            "x": 290,
+            "y": 360,
+            "forceX": 0,
+            "forceY": 0.6,
+            "radius": 50
+        }
+    ],
+    "stars": {
+        "twoStar": 160,
+        "threeStar": 100
+    }
+}

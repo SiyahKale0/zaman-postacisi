@@ -1,0 +1,20 @@
+{
+    "id": 1,
+    "world": "stone_age",
+    "name": "İlk Teslimat",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 320,
+        "y": 550,
+        "radius": 35
+    },
+    "obstacles": [],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

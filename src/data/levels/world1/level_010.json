@@ -1,0 +1,67 @@
+{
+    "id": 10,
+    "world": "stone_age",
+    "name": "Taş Devri Finali",
+    "inkLimit": 400,
+    "start": {
+        "x": 50,
+        "y": 80
+    },
+    "goal": {
+        "x": 310,
+        "y": 550,
+        "radius": 35
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 70,
+            "y": 220,
+            "width": 55,
+            "height": 20
+        },
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 180,
+            "forceX": 0.4,
+            "forceY": 0.6,
+            "radius": 55
+        },
+        {
+            "type": "teleport",
+            "x": 300,
+            "y": 260,
+            "exitX": 70,
+            "exitY": 400,
+            "radius": 22
+        },
+        {
+            "type": "bounce",
+            "x": 50,
+            "y": 490,
+            "width": 55,
+            "height": 15,
+            "power": 1.4
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 520,
+            "width": 70,
+            "height": 22
+        },
+        {
+            "type": "fan",
+            "x": 260,
+            "y": 460,
+            "forceX": 0.5,
+            "forceY": -0.2,
+            "radius": 45
+        }
+    ],
+    "stars": {
+        "twoStar": 280,
+        "threeStar": 200
+    }
+}

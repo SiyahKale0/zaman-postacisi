@@ -1,0 +1,52 @@
+{
+    "id": 8,
+    "world": "stone_age",
+    "name": "Zıplama Parkuru",
+    "inkLimit": 320,
+    "start": {
+        "x": 40,
+        "y": 100
+    },
+    "goal": {
+        "x": 320,
+        "y": 500,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "bounce",
+            "x": 70,
+            "y": 250,
+            "width": 50,
+            "height": 12,
+            "power": 1.4
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 340,
+            "width": 50,
+            "height": 12,
+            "power": 1.2
+        },
+        {
+            "type": "bounce",
+            "x": 280,
+            "y": 430,
+            "width": 50,
+            "height": 12,
+            "power": 1.0
+        },
+        {
+            "type": "spike",
+            "x": 130,
+            "y": 450,
+            "width": 45,
+            "height": 20
+        }
+    ],
+    "stars": {
+        "twoStar": 220,
+        "threeStar": 150
+    }
+}

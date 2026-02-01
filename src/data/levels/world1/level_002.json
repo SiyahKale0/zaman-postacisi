@@ -1,0 +1,20 @@
+{
+    "id": 2,
+    "world": "stone_age",
+    "name": "Basit Rampa",
+    "inkLimit": 300,
+    "start": {
+        "x": 50,
+        "y": 100
+    },
+    "goal": {
+        "x": 340,
+        "y": 580,
+        "radius": 35
+    },
+    "obstacles": [],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 120
+    }
+}

@@ -1,0 +1,43 @@
+{
+    "id": 6,
+    "world": "stone_age",
+    "name": "Çift Yol",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 100
+    },
+    "goal": {
+        "x": 300,
+        "y": 550,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 80,
+            "y": 320,
+            "width": 70,
+            "height": 25
+        },
+        {
+            "type": "spike",
+            "x": 200,
+            "y": 320,
+            "width": 70,
+            "height": 25
+        },
+        {
+            "type": "bounce",
+            "x": 150,
+            "y": 450,
+            "width": 60,
+            "height": 15,
+            "power": 1.3
+        }
+    ],
+    "stars": {
+        "twoStar": 240,
+        "threeStar": 180
+    }
+}
