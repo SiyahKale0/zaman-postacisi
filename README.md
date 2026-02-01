@@ -17,7 +17,7 @@ npm install
 Android için:
 
 ```bash
-npm expo start
+npx expo start
 ```
 
 
