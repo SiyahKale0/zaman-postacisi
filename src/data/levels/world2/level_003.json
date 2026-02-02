@@ -1,0 +1,43 @@
+{
+    "id": 3,
+    "world": "medieval",
+    "name": "Şövalye Yolu",
+    "inkLimit": 300,
+    "start": {
+        "x": 70,
+        "y": 150
+    },
+    "goal": {
+        "x": 300,
+        "y": 550,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "platform",
+            "x": 50,
+            "y": 280,
+            "width": 100,
+            "height": 12
+        },
+        {
+            "type": "platform",
+            "x": 220,
+            "y": 380,
+            "width": 100,
+            "height": 12
+        },
+        {
+            "type": "spike",
+            "x": 140,
+            "y": 320,
+            "width": 50,
+            "height": 80,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 170,
+        "threeStar": 120
+    }
+}

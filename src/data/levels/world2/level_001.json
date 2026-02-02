@@ -1,0 +1,28 @@
+{
+    "id": 1,
+    "world": "medieval",
+    "name": "Kale Kapısı",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 100
+    },
+    "goal": {
+        "x": 320,
+        "y": 580,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "platform",
+            "x": 100,
+            "y": 300,
+            "width": 180,
+            "height": 15
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

@@ -1,6 +1,6 @@
-import { Level, WorldType } from '../types';
+import { Level, WorldType, GAME_CONFIG } from '../types';
 
-// Import level data
+// Import Stone Age level data
 import level001 from '../data/levels/world1/level_001.json';
 import level002 from '../data/levels/world1/level_002.json';
 import level003 from '../data/levels/world1/level_003.json';
@@ -12,24 +12,212 @@ import level008 from '../data/levels/world1/level_008.json';
 import level009 from '../data/levels/world1/level_009.json';
 import level010 from '../data/levels/world1/level_010.json';
 
+// Import Medieval level data
+import medieval001 from '../data/levels/world2/level_001.json';
+import medieval002 from '../data/levels/world2/level_002.json';
+import medieval003 from '../data/levels/world2/level_003.json';
+import medieval004 from '../data/levels/world2/level_004.json';
+import medieval005 from '../data/levels/world2/level_005.json';
+import medieval006 from '../data/levels/world2/level_006.json';
+import medieval007 from '../data/levels/world2/level_007.json';
+import medieval008 from '../data/levels/world2/level_008.json';
+import medieval009 from '../data/levels/world2/level_009.json';
+import medieval010 from '../data/levels/world2/level_010.json';
+
+// Import Ottoman Steam level data
+import ottoman001 from '../data/levels/world3/level_001.json';
+import ottoman002 from '../data/levels/world3/level_002.json';
+import ottoman003 from '../data/levels/world3/level_003.json';
+import ottoman004 from '../data/levels/world3/level_004.json';
+import ottoman005 from '../data/levels/world3/level_005.json';
+import ottoman006 from '../data/levels/world3/level_006.json';
+import ottoman007 from '../data/levels/world3/level_007.json';
+import ottoman008 from '../data/levels/world3/level_008.json';
+import ottoman009 from '../data/levels/world3/level_009.json';
+import ottoman010 from '../data/levels/world3/level_010.json';
+
+// Import Neon Cyber level data
+import neon001 from '../data/levels/world4/level_001.json';
+import neon002 from '../data/levels/world4/level_002.json';
+import neon003 from '../data/levels/world4/level_003.json';
+import neon004 from '../data/levels/world4/level_004.json';
+import neon005 from '../data/levels/world4/level_005.json';
+import neon006 from '../data/levels/world4/level_006.json';
+import neon007 from '../data/levels/world4/level_007.json';
+import neon008 from '../data/levels/world4/level_008.json';
+import neon009 from '../data/levels/world4/level_009.json';
+import neon010 from '../data/levels/world4/level_010.json';
+
+// Import Mars level data
+import mars001 from '../data/levels/world5/level_001.json';
+import mars002 from '../data/levels/world5/level_002.json';
+import mars003 from '../data/levels/world5/level_003.json';
+import mars004 from '../data/levels/world5/level_004.json';
+import mars005 from '../data/levels/world5/level_005.json';
+import mars006 from '../data/levels/world5/level_006.json';
+import mars007 from '../data/levels/world5/level_007.json';
+import mars008 from '../data/levels/world5/level_008.json';
+import mars009 from '../data/levels/world5/level_009.json';
+import mars010 from '../data/levels/world5/level_010.json';
+
+const clamp = (value: number, min: number, max: number) =>
+    Math.min(Math.max(value, min), max);
+
+const sanitizeLevel = (level: Level): Level => {
+    const width = GAME_CONFIG.CANVAS_WIDTH;
+    const height = GAME_CONFIG.CANVAS_HEIGHT;
+
+    const safeGoalRadius = clamp(level.goal.radius, 18, 60);
+
+    const sanitizedObstacles = level.obstacles.map((obstacle) => {
+        switch (obstacle.type) {
+            case 'spike': {
+                const w = Math.max(8, obstacle.width);
+                const h = Math.max(8, obstacle.height);
+                return {
+                    ...obstacle,
+                    width: w,
+                    height: h,
+                    x: clamp(obstacle.x, 0, width - w),
+                    y: clamp(obstacle.y, 0, height - h),
+                };
+            }
+            case 'fan': {
+                const r = Math.max(16, obstacle.radius);
+                return {
+                    ...obstacle,
+                    radius: r,
+                    x: clamp(obstacle.x, r, width - r),
+                    y: clamp(obstacle.y, r, height - r),
+                };
+            }
+            case 'bounce': {
+                const w = Math.max(24, obstacle.width);
+                const h = Math.max(8, obstacle.height);
+                return {
+                    ...obstacle,
+                    width: w,
+                    height: h,
+                    x: clamp(obstacle.x, 0, width - w),
+                    y: clamp(obstacle.y, 0, height - h),
+                };
+            }
+            case 'teleport': {
+                const r = Math.max(18, obstacle.radius);
+                return {
+                    ...obstacle,
+                    radius: r,
+                    x: clamp(obstacle.x, r, width - r),
+                    y: clamp(obstacle.y, r, height - r),
+                    exitX: clamp(obstacle.exitX, r, width - r),
+                    exitY: clamp(obstacle.exitY, r, height - r),
+                };
+            }
+            case 'platform': {
+                const w = Math.max(24, obstacle.width);
+                const h = Math.max(8, obstacle.height);
+                return {
+                    ...obstacle,
+                    width: w,
+                    height: h,
+                    x: clamp(obstacle.x, 0, width - w),
+                    y: clamp(obstacle.y, 0, height - h),
+                };
+            }
+            case 'glass': {
+                const w = Math.max(24, obstacle.width);
+                const h = Math.max(12, obstacle.height);
+                return {
+                    ...obstacle,
+                    width: w,
+                    height: h,
+                    x: clamp(obstacle.x, 0, width - w),
+                    y: clamp(obstacle.y, 0, height - h),
+                };
+            }
+            default:
+                return obstacle;
+        }
+    });
+
+    return {
+        ...level,
+        start: {
+            x: clamp(level.start.x, 20, width - 20),
+            y: clamp(level.start.y, 20, height - 20),
+        },
+        goal: {
+            ...level.goal,
+            radius: safeGoalRadius,
+            x: clamp(level.goal.x, safeGoalRadius, width - safeGoalRadius),
+            y: clamp(level.goal.y, safeGoalRadius, height - safeGoalRadius),
+        },
+        obstacles: sanitizedObstacles,
+    };
+};
+
 // Level registry
 const levelRegistry: Record<string, Level[]> = {
     stone_age: [
-        level001 as Level,
-        level002 as Level,
-        level003 as Level,
-        level004 as Level,
-        level005 as Level,
-        level006 as Level,
-        level007 as Level,
-        level008 as Level,
-        level009 as Level,
-        level010 as Level,
+        sanitizeLevel(level001 as Level),
+        sanitizeLevel(level002 as Level),
+        sanitizeLevel(level003 as Level),
+        sanitizeLevel(level004 as Level),
+        sanitizeLevel(level005 as Level),
+        sanitizeLevel(level006 as Level),
+        sanitizeLevel(level007 as Level),
+        sanitizeLevel(level008 as Level),
+        sanitizeLevel(level009 as Level),
+        sanitizeLevel(level010 as Level),
     ],
-    medieval: [],
-    ottoman_steam: [],
-    neon_cyber: [],
-    mars: [],
+    medieval: [
+        sanitizeLevel(medieval001 as Level),
+        sanitizeLevel(medieval002 as Level),
+        sanitizeLevel(medieval003 as Level),
+        sanitizeLevel(medieval004 as Level),
+        sanitizeLevel(medieval005 as Level),
+        sanitizeLevel(medieval006 as Level),
+        sanitizeLevel(medieval007 as Level),
+        sanitizeLevel(medieval008 as Level),
+        sanitizeLevel(medieval009 as Level),
+        sanitizeLevel(medieval010 as Level),
+    ],
+    ottoman_steam: [
+        sanitizeLevel(ottoman001 as Level),
+        sanitizeLevel(ottoman002 as Level),
+        sanitizeLevel(ottoman003 as Level),
+        sanitizeLevel(ottoman004 as Level),
+        sanitizeLevel(ottoman005 as Level),
+        sanitizeLevel(ottoman006 as Level),
+        sanitizeLevel(ottoman007 as Level),
+        sanitizeLevel(ottoman008 as Level),
+        sanitizeLevel(ottoman009 as Level),
+        sanitizeLevel(ottoman010 as Level),
+    ],
+    neon_cyber: [
+        sanitizeLevel(neon001 as Level),
+        sanitizeLevel(neon002 as Level),
+        sanitizeLevel(neon003 as Level),
+        sanitizeLevel(neon004 as Level),
+        sanitizeLevel(neon005 as Level),
+        sanitizeLevel(neon006 as Level),
+        sanitizeLevel(neon007 as Level),
+        sanitizeLevel(neon008 as Level),
+        sanitizeLevel(neon009 as Level),
+        sanitizeLevel(neon010 as Level),
+    ],
+    mars: [
+        sanitizeLevel(mars001 as Level),
+        sanitizeLevel(mars002 as Level),
+        sanitizeLevel(mars003 as Level),
+        sanitizeLevel(mars004 as Level),
+        sanitizeLevel(mars005 as Level),
+        sanitizeLevel(mars006 as Level),
+        sanitizeLevel(mars007 as Level),
+        sanitizeLevel(mars008 as Level),
+        sanitizeLevel(mars009 as Level),
+        sanitizeLevel(mars010 as Level),
+    ],
 };
 
 // World metadata

@@ -1,0 +1,52 @@
+{
+    "id": 6,
+    "world": "medieval",
+    "name": "Zırhlı Koridor",
+    "inkLimit": 320,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 60,
+        "y": 580,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "bounce",
+            "x": 260,
+            "y": 250,
+            "width": 80,
+            "height": 18,
+            "power": 1.6
+        },
+        {
+            "type": "bounce",
+            "x": 50,
+            "y": 400,
+            "width": 80,
+            "height": 18,
+            "power": 1.4
+        },
+        {
+            "type": "spike",
+            "x": 170,
+            "y": 320,
+            "width": 60,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 140,
+            "y": 500,
+            "width": 100,
+            "height": 15
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

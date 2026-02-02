@@ -1,0 +1,99 @@
+{
+    "id": 10,
+    "world": "mars",
+    "name": "Son Teslimat",
+    "inkLimit": 500,
+    "start": {
+        "x": 60,
+        "y": 70
+    },
+    "goal": {
+        "x": 330,
+        "y": 630,
+        "radius": 35
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 150,
+            "forceX": 2,
+            "forceY": 1.5,
+            "radius": 60
+        },
+        {
+            "type": "spike",
+            "x": 60,
+            "y": 200,
+            "width": 70,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "teleport",
+            "x": 320,
+            "y": 230,
+            "exitX": 80,
+            "exitY": 400,
+            "radius": 30
+        },
+        {
+            "type": "platform",
+            "x": 150,
+            "y": 300,
+            "width": 100,
+            "height": 12
+        },
+        {
+            "type": "spike",
+            "x": 200,
+            "y": 350,
+            "width": 50,
+            "height": 80,
+            "rotation": 0
+        },
+        {
+            "type": "fan",
+            "x": 300,
+            "y": 420,
+            "forceX": -3,
+            "forceY": -1,
+            "radius": 60
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 500,
+            "width": 90,
+            "height": 20,
+            "power": 2.0
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 520,
+            "width": 90,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 220,
+            "y": 560,
+            "width": 80,
+            "height": 12
+        },
+        {
+            "type": "spike",
+            "x": 130,
+            "y": 580,
+            "width": 60,
+            "height": 40,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 300,
+        "threeStar": 230
+    }
+}

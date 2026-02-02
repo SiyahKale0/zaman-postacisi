@@ -1,0 +1,68 @@
+{
+    "id": 7,
+    "world": "ottoman_steam",
+    "name": "Kronometre",
+    "inkLimit": 350,
+    "start": {
+        "x": 190,
+        "y": 80
+    },
+    "goal": {
+        "x": 190,
+        "y": 620,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 200,
+            "width": 80,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 260,
+            "y": 200,
+            "width": 80,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 100,
+            "y": 350,
+            "width": 80,
+            "height": 18,
+            "power": 1.5
+        },
+        {
+            "type": "bounce",
+            "x": 210,
+            "y": 350,
+            "width": 80,
+            "height": 18,
+            "power": 1.5
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 450,
+            "width": 70,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "platform",
+            "x": 130,
+            "y": 550,
+            "width": 130,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

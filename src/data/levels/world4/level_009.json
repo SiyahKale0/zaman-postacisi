@@ -1,0 +1,76 @@
+{
+    "id": 9,
+    "world": "neon_cyber",
+    "name": "Quantum Geçidi",
+    "inkLimit": 400,
+    "start": {
+        "x": 50,
+        "y": 80
+    },
+    "goal": {
+        "x": 340,
+        "y": 620,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 180,
+            "y": 180,
+            "exitX": 80,
+            "exitY": 350,
+            "radius": 28
+        },
+        {
+            "type": "teleport",
+            "x": 280,
+            "y": 350,
+            "exitX": 150,
+            "exitY": 520,
+            "radius": 28
+        },
+        {
+            "type": "spike",
+            "x": 80,
+            "y": 200,
+            "width": 60,
+            "height": 80,
+            "rotation": 0
+        },
+        {
+            "type": "fan",
+            "x": 300,
+            "y": 200,
+            "forceX": -1.5,
+            "forceY": 2,
+            "radius": 55
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 420,
+            "width": 80,
+            "height": 18,
+            "power": 1.6
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 460,
+            "width": 80,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 250,
+            "y": 550,
+            "width": 80,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 240,
+        "threeStar": 180
+    }
+}

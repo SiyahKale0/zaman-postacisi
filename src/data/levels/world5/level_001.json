@@ -1,0 +1,36 @@
+{
+    "id": 1,
+    "world": "mars",
+    "name": "Kırmızı Kum",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 320,
+        "y": 580,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 350,
+            "forceX": 0,
+            "forceY": -2,
+            "radius": 70
+        },
+        {
+            "type": "platform",
+            "x": 200,
+            "y": 500,
+            "width": 100,
+            "height": 15
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

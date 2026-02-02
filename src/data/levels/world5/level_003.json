@@ -1,0 +1,52 @@
+{
+    "id": 3,
+    "world": "mars",
+    "name": "Krater Geçişi",
+    "inkLimit": 300,
+    "start": {
+        "x": 70,
+        "y": 100
+    },
+    "goal": {
+        "x": 300,
+        "y": 600,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 250,
+            "width": 120,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 220,
+            "y": 350,
+            "width": 120,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 100,
+            "y": 420,
+            "width": 80,
+            "height": 18,
+            "power": 1.6
+        },
+        {
+            "type": "platform",
+            "x": 180,
+            "y": 520,
+            "width": 100,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 170,
+        "threeStar": 120
+    }
+}

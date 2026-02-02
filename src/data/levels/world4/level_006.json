@@ -1,0 +1,60 @@
+{
+    "id": 6,
+    "world": "neon_cyber",
+    "name": "Siber Fırtına",
+    "inkLimit": 320,
+    "start": {
+        "x": 50,
+        "y": 140
+    },
+    "goal": {
+        "x": 340,
+        "y": 560,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 150,
+            "y": 220,
+            "forceX": 3,
+            "forceY": 1,
+            "radius": 60
+        },
+        {
+            "type": "fan",
+            "x": 250,
+            "y": 380,
+            "forceX": -2,
+            "forceY": 2,
+            "radius": 55
+        },
+        {
+            "type": "fan",
+            "x": 100,
+            "y": 500,
+            "forceX": 2.5,
+            "forceY": -1,
+            "radius": 50
+        },
+        {
+            "type": "spike",
+            "x": 180,
+            "y": 300,
+            "width": 40,
+            "height": 60,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 200,
+            "y": 480,
+            "width": 80,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

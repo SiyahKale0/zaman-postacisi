@@ -1,0 +1,53 @@
+{
+    "id": 5,
+    "world": "ottoman_steam",
+    "name": "Zaman Portalı",
+    "inkLimit": 280,
+    "start": {
+        "x": 70,
+        "y": 100
+    },
+    "goal": {
+        "x": 70,
+        "y": 550,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 280,
+            "y": 200,
+            "exitX": 150,
+            "exitY": 400,
+            "radius": 30
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 200,
+            "width": 150,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 220,
+            "y": 500,
+            "width": 80,
+            "height": 18,
+            "power": 1.4
+        },
+        {
+            "type": "spike",
+            "x": 200,
+            "y": 320,
+            "width": 30,
+            "height": 80,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 160,
+        "threeStar": 110
+    }
+}

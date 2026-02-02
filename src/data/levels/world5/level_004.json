@@ -1,0 +1,53 @@
+{
+    "id": 4,
+    "world": "mars",
+    "name": "Toz Fırtınası",
+    "inkLimit": 340,
+    "start": {
+        "x": 60,
+        "y": 140
+    },
+    "goal": {
+        "x": 320,
+        "y": 560,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 150,
+            "y": 200,
+            "forceX": 3,
+            "forceY": 1,
+            "radius": 65
+        },
+        {
+            "type": "fan",
+            "x": 280,
+            "y": 350,
+            "forceX": -2,
+            "forceY": 2,
+            "radius": 60
+        },
+        {
+            "type": "fan",
+            "x": 100,
+            "y": 480,
+            "forceX": 2.5,
+            "forceY": -0.5,
+            "radius": 55
+        },
+        {
+            "type": "spike",
+            "x": 180,
+            "y": 280,
+            "width": 40,
+            "height": 50,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 190,
+        "threeStar": 140
+    }
+}

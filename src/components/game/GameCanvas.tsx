@@ -5,13 +5,37 @@ import {
     Circle,
     Group,
     Skia,
+    Line,
+    vec,
+    DashPathEffect,
 } from '@shopify/react-native-skia';
 
 import { StyleSheet, View, Dimensions } from 'react-native';
 import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 import { runOnJS } from 'react-native-reanimated';
 import { useGameStore } from '../../stores/gameStore';
-import { GAME_CONFIG, PHYSICS, Point } from '../../types';
+import { GAME_CONFIG, PHYSICS, Point, Obstacle } from '../../types';
+import {
+    COLORS,
+    createEnvelopePath,
+    createEnvelopeFlapPath,
+    createEnvelopeStampPath,
+    createMailboxPath,
+    createMailboxDoorPath,
+    createMailboxFlagPath,
+    createSpringPath,
+    createBounceArrowPath,
+    createWindIndicatorPaths,
+    createPortalPath,
+    createPortalInnerPath,
+    createPortalCorePath,
+    createPortalConnectionPath,
+    createMinimalSpikePath,
+    createPlatformPath,
+    createGlassPath,
+    createGlassCrackPath,
+    createStartIndicatorPath,
+} from './GameAssets';
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window');
 const CANVAS_HEIGHT = SCREEN_HEIGHT * 0.75;
@@ -73,76 +97,294 @@ export const GameCanvas: React.FC = () => {
         return path;
     };
 
+    // Render obstacle based on type
+    const renderObstacle = (obstacle: Obstacle, index: number) => {
+        switch (obstacle.type) {
+            case 'spike':
+                return (
+                    <Group key={`spike-${index}`}>
+                        {/* Ana spike */}
+                        <Path
+                            path={createMinimalSpikePath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.width,
+                                obstacle.height,
+                                obstacle.rotation || 0
+                            )}
+                            color={COLORS.spike}
+                            style="fill"
+                        />
+                        {/* İnce vurgulu kenar */}
+                        <Path
+                            path={createMinimalSpikePath(
+                                obstacle.x + obstacle.width * 0.25,
+                                obstacle.y + obstacle.height * 0.15,
+                                obstacle.width * 0.5,
+                                obstacle.height * 0.7,
+                                obstacle.rotation || 0
+                            )}
+                            color={COLORS.spikeLight}
+                            style="stroke"
+                            strokeWidth={1}
+                        />
+                    </Group>
+                );
+
+            case 'fan':
+                const windPaths = createWindIndicatorPaths(
+                    obstacle.x,
+                    obstacle.y,
+                    obstacle.forceX,
+                    obstacle.forceY,
+                    obstacle.radius
+                );
+                return (
+                    <Group key={`fan-${index}`}>
+                        {/* Rüzgar alanı */}
+                        <Circle
+                            cx={obstacle.x}
+                            cy={obstacle.y}
+                            r={obstacle.radius}
+                            color="rgba(127, 161, 183, 0.12)"
+                            style="fill"
+                        />
+                        {/* Rüzgar çizgileri */}
+                        {windPaths.map((windPath, i) => (
+                            <Path
+                                key={`wind-${index}-${i}`}
+                                path={windPath}
+                                color={COLORS.fan}
+                                style="stroke"
+                                strokeWidth={1.5}
+                                strokeCap="round"
+                            />
+                        ))}
+                    </Group>
+                );
+
+            case 'bounce':
+                return (
+                    <Group key={`bounce-${index}`}>
+                        {/* Yay gövdesi */}
+                        <Path
+                            path={createSpringPath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.width,
+                                obstacle.height
+                            )}
+                            color={COLORS.bounce}
+                            style="stroke"
+                            strokeWidth={2}
+                            strokeCap="round"
+                        />
+                        {/* Zıplama oku */}
+                        <Path
+                            path={createBounceArrowPath(obstacle.x, obstacle.y, obstacle.width)}
+                            color={COLORS.bounceSpring}
+                            style="fill"
+                        />
+                        {/* Taban */}
+                        <Line
+                            p1={vec(obstacle.x, obstacle.y + obstacle.height)}
+                            p2={vec(obstacle.x + obstacle.width, obstacle.y + obstacle.height)}
+                            color={COLORS.bounce}
+                            strokeWidth={3}
+                        />
+                    </Group>
+                );
+
+            case 'teleport':
+                return (
+                    <Group key={`teleport-${index}`}>
+                        {/* Bağlantı çizgisi */}
+                        <Path
+                            path={createPortalConnectionPath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.exitX,
+                                obstacle.exitY
+                            )}
+                            color={COLORS.teleportGlow}
+                            style="stroke"
+                            strokeWidth={1.5}
+                        >
+                            <DashPathEffect intervals={[8, 4]} />
+                        </Path>
+
+                        {/* Giriş portalı */}
+                        <Circle
+                            cx={obstacle.x}
+                            cy={obstacle.y}
+                            r={obstacle.radius}
+                            color={COLORS.teleportGlow}
+                            style="fill"
+                        />
+                        <Path
+                            path={createPortalPath(obstacle.x, obstacle.y, obstacle.radius)}
+                            color={COLORS.teleportEntry}
+                            style="stroke"
+                            strokeWidth={2}
+                        />
+                        <Path
+                            path={createPortalInnerPath(obstacle.x, obstacle.y, obstacle.radius)}
+                            color={COLORS.teleportEntry}
+                            style="stroke"
+                            strokeWidth={2}
+                        />
+                        <Path
+                            path={createPortalCorePath(obstacle.x, obstacle.y, obstacle.radius)}
+                            color={COLORS.teleportEntry}
+                            style="fill"
+                        />
+
+                        {/* Çıkış portalı */}
+                        <Circle
+                            cx={obstacle.exitX}
+                            cy={obstacle.exitY}
+                            r={obstacle.radius * 0.8}
+                            color={COLORS.teleportGlow}
+                            style="fill"
+                        />
+                        <Path
+                            path={createPortalPath(obstacle.exitX, obstacle.exitY, obstacle.radius * 0.8)}
+                            color={COLORS.teleportExit}
+                            style="stroke"
+                            strokeWidth={1.5}
+                        />
+                        <Path
+                            path={createPortalCorePath(obstacle.exitX, obstacle.exitY, obstacle.radius * 0.8)}
+                            color={COLORS.teleportExit}
+                            style="fill"
+                        />
+                    </Group>
+                );
+
+            case 'platform':
+                return (
+                    <Path
+                        key={`platform-${index}`}
+                        path={createPlatformPath(
+                            obstacle.x,
+                            obstacle.y,
+                            obstacle.width,
+                            obstacle.height
+                        )}
+                        color={COLORS.platform}
+                        style="fill"
+                    />
+                );
+
+            case 'glass':
+                return (
+                    <Group key={`glass-${index}`}>
+                        <Path
+                            path={createGlassPath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.width,
+                                obstacle.height
+                            )}
+                            color={COLORS.glass}
+                            style="fill"
+                        />
+                        <Path
+                            path={createGlassPath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.width,
+                                obstacle.height
+                            )}
+                            color={COLORS.glassEdge}
+                            style="stroke"
+                            strokeWidth={1}
+                        />
+                        <Path
+                            path={createGlassCrackPath(
+                                obstacle.x,
+                                obstacle.y,
+                                obstacle.width,
+                                obstacle.height
+                            )}
+                            color="rgba(255, 255, 255, 0.3)"
+                            style="stroke"
+                            strokeWidth={1}
+                        />
+                    </Group>
+                );
+
+            default:
+                return null;
+        }
+    };
+
     if (!currentLevel) return null;
 
     const inkPercentage = (gameState.inkUsed / gameState.inkLimit) * 100;
-    const inkColor = inkPercentage > 80 ? '#ff4444' : inkPercentage > 50 ? '#ffaa00' : '#4488ff';
+    const inkColor = inkPercentage > 80
+        ? COLORS.inkDanger
+        : inkPercentage > 50
+            ? COLORS.inkWarning
+            : COLORS.ink;
 
     return (
         <View style={styles.container}>
             <GestureDetector gesture={drawGesture}>
                 <Canvas style={styles.canvas}>
-                    {/* Background gradient could go here */}
 
-                    {/* Goal (Mailbox) */}
-                    <Circle
-                        cx={currentLevel.goal.x}
-                        cy={currentLevel.goal.y}
-                        r={currentLevel.goal.radius}
-                        color="#22cc55"
-                        style="fill"
-                    />
-                    <Circle
-                        cx={currentLevel.goal.x}
-                        cy={currentLevel.goal.y}
-                        r={currentLevel.goal.radius - 4}
-                        color="#44ff77"
-                        style="fill"
-                    />
+                    {/* Hedef - Posta Kutusu */}
+                    <Group>
+                        {/* Ana gövde */}
+                        <Path
+                            path={createMailboxPath(
+                                currentLevel.goal.x,
+                                currentLevel.goal.y,
+                                currentLevel.goal.radius
+                            )}
+                            color={COLORS.mailbox}
+                            style="fill"
+                        />
+                        {/* Minimal üst vurgusu */}
+                        <Path
+                            path={createMailboxPath(
+                                currentLevel.goal.x,
+                                currentLevel.goal.y - 3,
+                                currentLevel.goal.radius * 0.85
+                            )}
+                            color={COLORS.mailboxLight}
+                            style="fill"
+                        />
+                        {/* Kapak/Ağız */}
+                        <Path
+                            path={createMailboxDoorPath(
+                                currentLevel.goal.x,
+                                currentLevel.goal.y,
+                                currentLevel.goal.radius
+                            )}
+                            color={COLORS.backgroundLight}
+                            style="fill"
+                        />
+                        {/* Bayrak */}
+                        <Path
+                            path={createMailboxFlagPath(
+                                currentLevel.goal.x,
+                                currentLevel.goal.y,
+                                currentLevel.goal.radius
+                            )}
+                            color={COLORS.mailboxFlag}
+                            style="stroke"
+                            strokeWidth={2}
+                            strokeCap="round"
+                        />
+                    </Group>
 
-                    {/* Obstacles */}
-                    {currentLevel.obstacles.map((obstacle, index) => {
-                        if (obstacle.type === 'spike') {
-                            return (
-                                <Group key={`spike-${index}`}>
-                                    {/* Spike triangle - simplified as rectangle for now */}
-                                    <Path
-                                        path={createSpikePath(obstacle)}
-                                        color="#ff4444"
-                                        style="fill"
-                                    />
-                                </Group>
-                            );
-                        }
+                    {/* Engeller */}
+                    {currentLevel.obstacles.map((obstacle, index) =>
+                        renderObstacle(obstacle, index)
+                    )}
 
-                        if (obstacle.type === 'fan') {
-                            return (
-                                <Circle
-                                    key={`fan-${index}`}
-                                    cx={obstacle.x}
-                                    cy={obstacle.y}
-                                    r={obstacle.radius}
-                                    color="rgba(100, 200, 255, 0.3)"
-                                    style="fill"
-                                />
-                            );
-                        }
-
-                        if (obstacle.type === 'bounce') {
-                            return (
-                                <Path
-                                    key={`bounce-${index}`}
-                                    path={createBouncePath(obstacle)}
-                                    color="#ffcc00"
-                                    style="fill"
-                                />
-                            );
-                        }
-
-                        return null;
-                    })}
-
-                    {/* Drawn Line */}
+                    {/* Çizilen Çizgi */}
                     <Path
                         path={getDrawnPath()}
                         color={inkColor}
@@ -152,66 +394,83 @@ export const GameCanvas: React.FC = () => {
                         strokeJoin="round"
                     />
 
-                    {/* Package */}
-                    <Circle
-                        cx={gameState.package.x}
-                        cy={gameState.package.y}
-                        r={gameState.package.radius}
-                        color="#8855ff"
-                        style="fill"
-                    />
-                    <Circle
-                        cx={gameState.package.x}
-                        cy={gameState.package.y}
-                        r={gameState.package.radius - 3}
-                        color="#aa77ff"
-                        style="fill"
-                    />
-
-                    {/* Start position indicator */}
-                    {gameState.phase === 'idle' && (
-                        <Circle
-                            cx={currentLevel.start.x}
-                            cy={currentLevel.start.y}
-                            r={18}
-                            color="rgba(136, 85, 255, 0.3)"
+                    {/* Paket - Zarf */}
+                    <Group>
+                        {/* Ana zarf */}
+                        <Path
+                            path={createEnvelopePath(
+                                gameState.package.x,
+                                gameState.package.y,
+                                gameState.package.radius * 2
+                            )}
+                            color={COLORS.envelope}
                             style="fill"
                         />
+                        {/* Zarf gölgesi (alt) */}
+                        <Path
+                            path={createEnvelopePath(
+                                gameState.package.x,
+                                gameState.package.y + 2,
+                                gameState.package.radius * 1.8
+                            )}
+                            color={COLORS.envelopeShadow}
+                            style="fill"
+                        />
+                        {/* Üst kapak çizgisi */}
+                        <Path
+                            path={createEnvelopeFlapPath(
+                                gameState.package.x,
+                                gameState.package.y,
+                                gameState.package.radius * 2
+                            )}
+                            color={COLORS.envelopeShadow}
+                            style="stroke"
+                            strokeWidth={1.2}
+                        />
+                        {/* Pul */}
+                        <Path
+                            path={createEnvelopeStampPath(
+                                gameState.package.x,
+                                gameState.package.y,
+                                gameState.package.radius * 2
+                            )}
+                            color={COLORS.seal}
+                            style="fill"
+                        />
+                        <Circle
+                            cx={gameState.package.x + gameState.package.radius * 0.42}
+                            cy={gameState.package.y - gameState.package.radius * 0.42}
+                            r={2}
+                            color={COLORS.sealLight}
+                            style="fill"
+                        />
+                    </Group>
+
+                    {/* Başlangıç noktası göstergesi */}
+                    {gameState.phase === 'idle' && (
+                        <Group>
+                            <Circle
+                                cx={currentLevel.start.x}
+                                cy={currentLevel.start.y}
+                                r={20}
+                                color="rgba(232, 226, 214, 0.15)"
+                                style="stroke"
+                                strokeWidth={1.5}
+                            />
+                            <Circle
+                                cx={currentLevel.start.x}
+                                cy={currentLevel.start.y}
+                                r={12}
+                                color="rgba(232, 226, 214, 0.25)"
+                                style="fill"
+                            />
+                        </Group>
                     )}
                 </Canvas>
             </GestureDetector>
         </View>
     );
 };
-
-// Helper to create spike path
-function createSpikePath(spike: { x: number; y: number; width: number; height: number }) {
-    const path = Skia.Path.Make();
-    const { x, y, width, height } = spike;
-
-    // Triangle pointing up
-    path.moveTo(x + width / 2, y);
-    path.lineTo(x + width, y + height);
-    path.lineTo(x, y + height);
-    path.close();
-
-    return path;
-}
-
-// Helper to create bounce pad path
-function createBouncePath(bounce: { x: number; y: number; width: number; height: number }) {
-    const path = Skia.Path.Make();
-    const { x, y, width, height } = bounce;
-
-    // Rounded rectangle (simplified)
-    path.addRRect({
-        rect: { x, y, width, height },
-        rx: 5,
-        ry: 5,
-    });
-
-    return path;
-}
 
 const styles = StyleSheet.create({
     container: {
@@ -220,7 +479,7 @@ const styles = StyleSheet.create({
     canvas: {
         width: SCREEN_WIDTH,
         height: CANVAS_HEIGHT,
-        backgroundColor: '#1a1a2e',
+        backgroundColor: COLORS.background,
     },
 });
 

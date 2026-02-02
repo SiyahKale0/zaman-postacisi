@@ -1,0 +1,53 @@
+{
+    "id": 4,
+    "world": "neon_cyber",
+    "name": "Lazer Tuzağı",
+    "inkLimit": 340,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 320,
+        "y": 560,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 130,
+            "y": 200,
+            "width": 20,
+            "height": 200,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 240,
+            "y": 250,
+            "width": 20,
+            "height": 200,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 60,
+            "y": 350,
+            "width": 60,
+            "height": 18,
+            "power": 1.6
+        },
+        {
+            "type": "bounce",
+            "x": 270,
+            "y": 480,
+            "width": 60,
+            "height": 18,
+            "power": 1.5
+        }
+    ],
+    "stars": {
+        "twoStar": 190,
+        "threeStar": 140
+    }
+}

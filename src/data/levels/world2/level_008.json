@@ -1,0 +1,45 @@
+{
+    "id": 8,
+    "world": "medieval",
+    "name": "Çifte Portal",
+    "inkLimit": 300,
+    "start": {
+        "x": 50,
+        "y": 150
+    },
+    "goal": {
+        "x": 340,
+        "y": 150,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 150,
+            "y": 300,
+            "exitX": 250,
+            "exitY": 500,
+            "radius": 25
+        },
+        {
+            "type": "teleport",
+            "x": 100,
+            "y": 550,
+            "exitX": 300,
+            "exitY": 300,
+            "radius": 25
+        },
+        {
+            "type": "spike",
+            "x": 180,
+            "y": 400,
+            "width": 80,
+            "height": 120,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 170,
+        "threeStar": 120
+    }
+}

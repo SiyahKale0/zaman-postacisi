@@ -1,0 +1,53 @@
+{
+    "id": 7,
+    "world": "medieval",
+    "name": "Ejderha Yuvası",
+    "inkLimit": 350,
+    "start": {
+        "x": 70,
+        "y": 100
+    },
+    "goal": {
+        "x": 320,
+        "y": 600,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 200,
+            "y": 220,
+            "forceX": 0,
+            "forceY": 3,
+            "radius": 60
+        },
+        {
+            "type": "spike",
+            "x": 80,
+            "y": 350,
+            "width": 40,
+            "height": 50,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 270,
+            "y": 350,
+            "width": 40,
+            "height": 50,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 150,
+            "y": 500,
+            "width": 90,
+            "height": 20,
+            "power": 1.7
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

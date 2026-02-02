@@ -1,0 +1,68 @@
+{
+    "id": 8,
+    "world": "mars",
+    "name": "Koloni Merkezi",
+    "inkLimit": 380,
+    "start": {
+        "x": 60,
+        "y": 100
+    },
+    "goal": {
+        "x": 330,
+        "y": 600,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "glass",
+            "x": 100,
+            "y": 200,
+            "width": 180,
+            "height": 15
+        },
+        {
+            "type": "teleport",
+            "x": 300,
+            "y": 280,
+            "exitX": 80,
+            "exitY": 450,
+            "radius": 28
+        },
+        {
+            "type": "spike",
+            "x": 140,
+            "y": 300,
+            "width": 100,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "fan",
+            "x": 250,
+            "y": 400,
+            "forceX": -2,
+            "forceY": 1.5,
+            "radius": 55
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 520,
+            "width": 80,
+            "height": 18,
+            "power": 1.6
+        },
+        {
+            "type": "spike",
+            "x": 60,
+            "y": 550,
+            "width": 80,
+            "height": 35,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 220,
+        "threeStar": 170
+    }
+}

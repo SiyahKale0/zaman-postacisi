@@ -1,0 +1,37 @@
+{
+    "id": 2,
+    "world": "medieval",
+    "name": "Hendek Geçişi",
+    "inkLimit": 320,
+    "start": {
+        "x": 50,
+        "y": 120
+    },
+    "goal": {
+        "x": 340,
+        "y": 560,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 130,
+            "y": 380,
+            "width": 120,
+            "height": 25,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 60,
+            "y": 320,
+            "width": 60,
+            "height": 16,
+            "power": 1.5
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

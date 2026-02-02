@@ -1,0 +1,53 @@
+{
+    "id": 5,
+    "world": "neon_cyber",
+    "name": "Çoklu Portal",
+    "inkLimit": 280,
+    "start": {
+        "x": 70,
+        "y": 100
+    },
+    "goal": {
+        "x": 320,
+        "y": 600,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 150,
+            "y": 200,
+            "exitX": 280,
+            "exitY": 350,
+            "radius": 25
+        },
+        {
+            "type": "teleport",
+            "x": 100,
+            "y": 400,
+            "exitX": 250,
+            "exitY": 520,
+            "radius": 25
+        },
+        {
+            "type": "spike",
+            "x": 170,
+            "y": 300,
+            "width": 80,
+            "height": 120,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 500,
+            "width": 60,
+            "height": 40,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 160,
+        "threeStar": 110
+    }
+}

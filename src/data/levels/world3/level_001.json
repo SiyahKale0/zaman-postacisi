@@ -1,0 +1,36 @@
+{
+    "id": 1,
+    "world": "ottoman_steam",
+    "name": "Dişli Odası",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 320,
+        "y": 580,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "platform",
+            "x": 140,
+            "y": 320,
+            "width": 100,
+            "height": 15
+        },
+        {
+            "type": "bounce",
+            "x": 200,
+            "y": 480,
+            "width": 80,
+            "height": 18,
+            "power": 1.4
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

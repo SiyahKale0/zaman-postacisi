@@ -1,0 +1,44 @@
+{
+    "id": 5,
+    "world": "medieval",
+    "name": "Gizli Geçit",
+    "inkLimit": 280,
+    "start": {
+        "x": 50,
+        "y": 100
+    },
+    "goal": {
+        "x": 340,
+        "y": 580,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "teleport",
+            "x": 180,
+            "y": 250,
+            "exitX": 280,
+            "exitY": 450,
+            "radius": 28
+        },
+        {
+            "type": "spike",
+            "x": 100,
+            "y": 350,
+            "width": 180,
+            "height": 25,
+            "rotation": 0
+        },
+        {
+            "type": "platform",
+            "x": 200,
+            "y": 550,
+            "width": 100,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 160,
+        "threeStar": 110
+    }
+}

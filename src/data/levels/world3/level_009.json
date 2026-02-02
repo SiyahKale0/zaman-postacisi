@@ -1,0 +1,75 @@
+{
+    "id": 9,
+    "world": "ottoman_steam",
+    "name": "Mekanik Saray",
+    "inkLimit": 400,
+    "start": {
+        "x": 50,
+        "y": 80
+    },
+    "goal": {
+        "x": 340,
+        "y": 620,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 180,
+            "forceX": 2,
+            "forceY": 0,
+            "radius": 50
+        },
+        {
+            "type": "platform",
+            "x": 260,
+            "y": 230,
+            "width": 80,
+            "height": 12
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 280,
+            "width": 120,
+            "height": 25,
+            "rotation": 0
+        },
+        {
+            "type": "teleport",
+            "x": 300,
+            "y": 320,
+            "exitX": 100,
+            "exitY": 480,
+            "radius": 25
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 400,
+            "width": 80,
+            "height": 18,
+            "power": 1.7
+        },
+        {
+            "type": "spike",
+            "x": 200,
+            "y": 520,
+            "width": 60,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 270,
+            "y": 550,
+            "width": 60,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 240,
+        "threeStar": 180
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "id": 2,
+    "world": "mars",
+    "name": "Düşük Yerçekimi",
+    "inkLimit": 320,
+    "start": {
+        "x": 50,
+        "y": 150
+    },
+    "goal": {
+        "x": 340,
+        "y": 550,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "bounce",
+            "x": 100,
+            "y": 350,
+            "width": 80,
+            "height": 20,
+            "power": 2.0
+        },
+        {
+            "type": "bounce",
+            "x": 220,
+            "y": 450,
+            "width": 80,
+            "height": 20,
+            "power": 1.8
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 500,
+            "width": 50,
+            "height": 60,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

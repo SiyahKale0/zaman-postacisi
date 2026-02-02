@@ -1,0 +1,51 @@
+{
+    "id": 3,
+    "world": "neon_cyber",
+    "name": "Hologram Köprü",
+    "inkLimit": 300,
+    "start": {
+        "x": 70,
+        "y": 150
+    },
+    "goal": {
+        "x": 300,
+        "y": 550,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "glass",
+            "x": 100,
+            "y": 280,
+            "width": 180,
+            "height": 15
+        },
+        {
+            "type": "glass",
+            "x": 150,
+            "y": 420,
+            "width": 130,
+            "height": 15
+        },
+        {
+            "type": "spike",
+            "x": 100,
+            "y": 350,
+            "width": 40,
+            "height": 60,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 250,
+            "y": 350,
+            "width": 40,
+            "height": 60,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 170,
+        "threeStar": 120
+    }
+}

@@ -1,0 +1,36 @@
+{
+    "id": 1,
+    "world": "neon_cyber",
+    "name": "Neon Işıkları",
+    "inkLimit": 350,
+    "start": {
+        "x": 60,
+        "y": 120
+    },
+    "goal": {
+        "x": 320,
+        "y": 580,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "platform",
+            "x": 130,
+            "y": 300,
+            "width": 120,
+            "height": 15
+        },
+        {
+            "type": "teleport",
+            "x": 280,
+            "y": 400,
+            "exitX": 100,
+            "exitY": 500,
+            "radius": 25
+        }
+    ],
+    "stars": {
+        "twoStar": 200,
+        "threeStar": 150
+    }
+}

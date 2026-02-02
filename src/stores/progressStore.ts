@@ -18,6 +18,7 @@ interface ProgressStore extends PlayerProgress {
     unlockWorld: (world: WorldType) => void;
     purchaseUpgrade: (upgrade: keyof Upgrades, cost: number) => boolean;
     setCosmetic: (type: keyof Cosmetics, value: string) => void;
+    resetProgress: () => void;
 
     // Getters
     isLevelCompleted: (levelKey: string) => boolean;
@@ -141,6 +142,16 @@ export const useProgressStore = create<ProgressStore>()(
                     (total, level) => total + level.stars,
                     0
                 );
+            },
+
+            resetProgress: () => {
+                set({
+                    stamps: 0,
+                    completedLevels: {},
+                    unlockedWorlds: ['stone_age'],
+                    upgrades: initialUpgrades,
+                    cosmetics: initialCosmetics,
+                });
             },
         }),
         {

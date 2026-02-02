@@ -1,0 +1,44 @@
+{
+    "id": 2,
+    "world": "neon_cyber",
+    "name": "Dijital Akış",
+    "inkLimit": 320,
+    "start": {
+        "x": 50,
+        "y": 100
+    },
+    "goal": {
+        "x": 340,
+        "y": 560,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 250,
+            "forceX": 2.5,
+            "forceY": 0,
+            "radius": 65
+        },
+        {
+            "type": "fan",
+            "x": 280,
+            "y": 400,
+            "forceX": 0,
+            "forceY": 2,
+            "radius": 55
+        },
+        {
+            "type": "platform",
+            "x": 200,
+            "y": 500,
+            "width": 100,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 180,
+        "threeStar": 130
+    }
+}

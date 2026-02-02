@@ -1,0 +1,84 @@
+{
+    "id": 8,
+    "world": "neon_cyber",
+    "name": "Veri Akışı",
+    "inkLimit": 380,
+    "start": {
+        "x": 190,
+        "y": 80
+    },
+    "goal": {
+        "x": 190,
+        "y": 620,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 100,
+            "y": 180,
+            "forceX": 2,
+            "forceY": 1,
+            "radius": 50
+        },
+        {
+            "type": "fan",
+            "x": 280,
+            "y": 180,
+            "forceX": -2,
+            "forceY": 1,
+            "radius": 50
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 300,
+            "width": 100,
+            "height": 25,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 240,
+            "y": 300,
+            "width": 100,
+            "height": 25,
+            "rotation": 0
+        },
+        {
+            "type": "bounce",
+            "x": 150,
+            "y": 380,
+            "width": 90,
+            "height": 18,
+            "power": 1.5
+        },
+        {
+            "type": "glass",
+            "x": 140,
+            "y": 480,
+            "width": 110,
+            "height": 15
+        },
+        {
+            "type": "spike",
+            "x": 80,
+            "y": 550,
+            "width": 40,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 270,
+            "y": 550,
+            "width": 40,
+            "height": 40,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 220,
+        "threeStar": 170
+    }
+}

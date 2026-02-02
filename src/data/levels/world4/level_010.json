@@ -1,0 +1,91 @@
+{
+    "id": 10,
+    "world": "neon_cyber",
+    "name": "AI Çekirdeği",
+    "inkLimit": 450,
+    "start": {
+        "x": 60,
+        "y": 70
+    },
+    "goal": {
+        "x": 330,
+        "y": 630,
+        "radius": 32
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 200,
+            "y": 150,
+            "forceX": 2,
+            "forceY": 2,
+            "radius": 60
+        },
+        {
+            "type": "spike",
+            "x": 60,
+            "y": 220,
+            "width": 80,
+            "height": 30,
+            "rotation": 0
+        },
+        {
+            "type": "teleport",
+            "x": 320,
+            "y": 250,
+            "exitX": 80,
+            "exitY": 420,
+            "radius": 30
+        },
+        {
+            "type": "platform",
+            "x": 150,
+            "y": 320,
+            "width": 100,
+            "height": 12
+        },
+        {
+            "type": "fan",
+            "x": 280,
+            "y": 400,
+            "forceX": -2.5,
+            "forceY": -1,
+            "radius": 55
+        },
+        {
+            "type": "bounce",
+            "x": 180,
+            "y": 500,
+            "width": 80,
+            "height": 18,
+            "power": 1.8
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 520,
+            "width": 80,
+            "height": 40,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 280,
+            "y": 540,
+            "width": 50,
+            "height": 50,
+            "rotation": 0
+        },
+        {
+            "type": "glass",
+            "x": 150,
+            "y": 580,
+            "width": 100,
+            "height": 12
+        }
+    ],
+    "stars": {
+        "twoStar": 270,
+        "threeStar": 210
+    }
+}

@@ -1,0 +1,45 @@
+{
+    "id": 4,
+    "world": "medieval",
+    "name": "Fırtınalı Kule",
+    "inkLimit": 340,
+    "start": {
+        "x": 60,
+        "y": 180
+    },
+    "goal": {
+        "x": 330,
+        "y": 500,
+        "radius": 30
+    },
+    "obstacles": [
+        {
+            "type": "fan",
+            "x": 180,
+            "y": 300,
+            "forceX": 2.5,
+            "forceY": -0.5,
+            "radius": 65
+        },
+        {
+            "type": "fan",
+            "x": 280,
+            "y": 450,
+            "forceX": -1.5,
+            "forceY": -1,
+            "radius": 55
+        },
+        {
+            "type": "spike",
+            "x": 50,
+            "y": 420,
+            "width": 80,
+            "height": 30,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 190,
+        "threeStar": 140
+    }
+}

@@ -1,0 +1,77 @@
+{
+    "id": 9,
+    "world": "mars",
+    "name": "Valles Marineris",
+    "inkLimit": 400,
+    "start": {
+        "x": 50,
+        "y": 80
+    },
+    "goal": {
+        "x": 340,
+        "y": 620,
+        "radius": 28
+    },
+    "obstacles": [
+        {
+            "type": "spike",
+            "x": 130,
+            "y": 120,
+            "width": 25,
+            "height": 250,
+            "rotation": 0
+        },
+        {
+            "type": "spike",
+            "x": 235,
+            "y": 180,
+            "width": 25,
+            "height": 250,
+            "rotation": 0
+        },
+        {
+            "type": "fan",
+            "x": 80,
+            "y": 250,
+            "forceX": 2.5,
+            "forceY": 0,
+            "radius": 45
+        },
+        {
+            "type": "fan",
+            "x": 310,
+            "y": 350,
+            "forceX": -2.5,
+            "forceY": 0,
+            "radius": 45
+        },
+        {
+            "type": "teleport",
+            "x": 180,
+            "y": 480,
+            "exitX": 280,
+            "exitY": 550,
+            "radius": 25
+        },
+        {
+            "type": "bounce",
+            "x": 60,
+            "y": 520,
+            "width": 80,
+            "height": 18,
+            "power": 1.7
+        },
+        {
+            "type": "spike",
+            "x": 160,
+            "y": 580,
+            "width": 80,
+            "height": 30,
+            "rotation": 0
+        }
+    ],
+    "stars": {
+        "twoStar": 240,
+        "threeStar": 180
+    }
+}

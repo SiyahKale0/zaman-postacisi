@@ -134,25 +134,37 @@ export function isOutOfBounds(
 export function handleObstacles(
     state: PackageState,
     obstacles: Obstacle[]
-): { state: PackageState; hitSpike: boolean; teleported: boolean } {
+): { state: PackageState; hitSpike: boolean; teleported: boolean; collisionType: string | null } {
     let newState = { ...state };
     let hitSpike = false;
     let teleported = false;
+    let collisionType: string | null = null;
 
     for (const obstacle of obstacles) {
         switch (obstacle.type) {
             case 'spike':
                 if (checkSpikeCollision(newState, obstacle)) {
                     hitSpike = true;
+                    collisionType = 'spike';
                 }
                 break;
 
             case 'fan':
+                const inFanRange = distance(
+                    { x: newState.x, y: newState.y },
+                    { x: obstacle.x, y: obstacle.y }
+                ) < obstacle.radius;
+                if (inFanRange) {
+                    collisionType = 'fan';
+                }
                 newState = applyFanForce(newState, obstacle);
                 break;
 
             case 'bounce':
                 const bounceResult = handleBounceCollision(newState, obstacle);
+                if (bounceResult.bounced) {
+                    collisionType = 'bounce';
+                }
                 newState = bounceResult.state;
                 break;
 
@@ -161,6 +173,7 @@ export function handleObstacles(
                 if (teleportResult.teleported) {
                     newState = teleportResult.state;
                     teleported = true;
+                    collisionType = 'teleport';
                 }
                 break;
 
@@ -174,7 +187,7 @@ export function handleObstacles(
         }
     }
 
-    return { state: newState, hitSpike, teleported };
+    return { state: newState, hitSpike, teleported, collisionType };
 }
 
 function checkSpikeCollision(
@@ -278,6 +291,7 @@ export function physicsStep(
     won: boolean;
     failed: boolean;
     reason?: 'spike' | 'outOfBounds';
+    collision?: string | null;
 } {
     if (!state.isActive) {
         return { state, won: false, failed: false };
@@ -292,24 +306,31 @@ export function physicsStep(
     // Handle collisions with drawn lines
     const lineResult = handleLineCollisions(newState, segments);
     newState = lineResult.state;
+    
+    let collision: string | null = lineResult.bounced ? 'stone' : null;
 
     // Handle obstacles
     const obstacleResult = handleObstacles(newState, obstacles);
     newState = obstacleResult.state;
+    
+    // Obstacle collision takes priority
+    if (obstacleResult.collisionType) {
+        collision = obstacleResult.collisionType;
+    }
 
     // Check win condition
     if (checkGoalReached(newState, goal)) {
-        return { state: { ...newState, isActive: false }, won: true, failed: false };
+        return { state: { ...newState, isActive: false }, won: true, failed: false, collision };
     }
 
     // Check fail conditions
     if (obstacleResult.hitSpike) {
-        return { state: { ...newState, isActive: false }, won: false, failed: true, reason: 'spike' };
+        return { state: { ...newState, isActive: false }, won: false, failed: true, reason: 'spike', collision };
     }
 
     if (isOutOfBounds(newState, bounds)) {
-        return { state: { ...newState, isActive: false }, won: false, failed: true, reason: 'outOfBounds' };
+        return { state: { ...newState, isActive: false }, won: false, failed: true, reason: 'outOfBounds', collision };
     }
 
-    return { state: newState, won: false, failed: false };
+    return { state: newState, won: false, failed: false, collision };
 }
